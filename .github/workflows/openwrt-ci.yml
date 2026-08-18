@@ -45,21 +45,20 @@ jobs:
       - name: Free Disk Space (Ubuntu)
         uses: jlumbroso/free-disk-space@main
         with:
-          # this might remove tools that are actually needed,
-          # if set to "true" but frees about 6 GB
           tool-cache: true
-          # all of these default to true, but feel free to set to
-          # "false" if necessary for your workflow
           android: true
           dotnet: true
           haskell: true
           large-packages: true
           swap-storage: true
-      - name: Add QModem & modem_feeds source
+
+      - name: Add QModem feeds
         run: |
+          git config --global http.lowSpeedLimit 1000
+          git config --global http.lowSpeedTime 120
           echo 'src-git modem https://github.com/FUjr/modem_feeds.git;main' >> feeds.conf.default
           echo 'src-git qmodem https://github.com/FUjr/QModem.git;main' >> feeds.conf.default
-          
+
       - name: Update feeds
         run: |
           sed -i 's/#src-git helloworld/src-git helloworld/g' ./feeds.conf.default
@@ -67,7 +66,12 @@ jobs:
           ./scripts/feeds install -a
 
       - name: Generate configuration file
-        run: make defconfig
+        run: |
+          make defconfig
+          echo "CONFIG_PACKAGE_qmodem=y" >> .config
+          echo "CONFIG_PACKAGE_luci-app-qmodem=y" >> .config
+          echo "CONFIG_PACKAGE_luci-compat=y" >> .config
+          cat .config | grep qmodem
 
       - name: Download packages
         run: make download -j16
