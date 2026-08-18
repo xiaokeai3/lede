@@ -55,7 +55,11 @@ jobs:
           haskell: true
           large-packages: true
           swap-storage: true
-
+      - name: Add QModem & modem_feeds source
+        run: |
+          echo 'src-git modem https://github.com/FUjr/modem_feeds.git;main' >> feeds.conf.default
+          echo 'src-git qmodem https://github.com/FUjr/QModem.git;main' >> feeds.conf.default
+          
       - name: Update feeds
         run: |
           sed -i 's/#src-git helloworld/src-git helloworld/g' ./feeds.conf.default
