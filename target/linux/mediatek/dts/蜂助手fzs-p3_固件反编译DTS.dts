@@ -5,7 +5,7 @@
 	interrupt-parent = <0x01>;
 	#address-cells = <0x02>;
 	#size-cells = <0x02>;
-	model = "FZS 5GCPE P3";
+	model = "FZS 5GCPE P5";
 
 	firmware {
 
