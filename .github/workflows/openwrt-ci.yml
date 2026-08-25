@@ -41,7 +41,12 @@ jobs:
 
       - name: Checkout OpenWrt
         uses: actions/checkout@v4
-
+        
+      - name: Apply custom dts & config
+        run: |
+          # 复制设备树，改成你实际仓库内dts文件名
+          cp -f ./fzs_p3.dts target/linux/mediatek/dts/
+          
       - name: Free Disk Space (Ubuntu)
         uses: jlumbroso/free-disk-space@main
         with:
