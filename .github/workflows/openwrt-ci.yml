@@ -10,7 +10,7 @@ name: OpenWrt-CI
 on:
   schedule:
     - cron: 0 20 * * *
-
+   workflow_dispatch:
 permissions:
   contents: read
 
@@ -44,7 +44,6 @@ jobs:
         
       - name: Apply custom dts & config
         run: |
-          # 复制设备树，改成你实际仓库内dts文件名
           cp -f ./fzs_p3.dts target/linux/mediatek/dts/
           
       - name: Free Disk Space (Ubuntu)
