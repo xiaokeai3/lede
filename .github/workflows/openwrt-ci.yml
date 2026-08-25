@@ -42,7 +42,7 @@ jobs:
       - name: Checkout OpenWrt
         uses: actions/checkout@v4
         
-      - name: Apply custom dts & config
+      - name: Apply custom dts
         run: |
           cp -f ./fzs_p3.dts target/linux/mediatek/dts/
           
