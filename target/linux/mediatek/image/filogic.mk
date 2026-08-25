@@ -1045,3 +1045,17 @@ define Device/xiaomi_redmi-router-ax6000
   IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
 endef
 TARGET_DEVICES += xiaomi_redmi-router-ax6000
+
+define Device/fzs_p3
+  DEVICE_VENDOR := FZS
+  DEVICE_MODEL := 5GCPE P3
+  DEVICE_DTS := fzs_p3
+  DEVICE_DTS_DIR := ../dts
+  UBINIZE_OPTS := -E 5
+  BLOCKSIZE := 128k
+  PAGESIZE := 2048
+  KERNEL_IN_UBI := 1
+  DEVICE_PACKAGES := kmod-mt7981-firmware mt7981-wo-firmware kmod-usb3 luci-app-qmodem luci-app-fancontrol luci-app-oaf
+  IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
+endef
+TARGET_DEVICES += fzs_p3
