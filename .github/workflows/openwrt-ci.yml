@@ -61,6 +61,14 @@ jobs:
           sed -i 's/#src-git helloworld/src-git helloworld/g' ./feeds.conf.default
           ./scripts/feeds update -a
           ./scripts/feeds install -a
+      - name: Fix QModem dependency name
+        run: |
+          grep -rl "quectel-CM-5G" feeds/qmodem/ | xargs sed -i 's/quectel-CM-5G/quectel_CM_5G_M/g'
+      
+      - name: Install kmod-mhi-wwan
+        run: |
+          ./scripts/feeds update openwrt_packages
+          ./scripts/feeds install kmod-mhi-wwan
 
       - name: Generate configuration file
         run: make defconfig
