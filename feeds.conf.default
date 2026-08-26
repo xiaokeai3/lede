@@ -11,6 +11,6 @@ src-git qmodem https://github.com/FUjr/QModem.git;main
 #src-git targets https://github.com/openwrt/targets.git
 src-git oldpackages http://git.openwrt.org/packages.git
 #src-link custom /usr/src/openwrt/custom-feed
-src-git fancontrol https://github.com/zkcaryq/luci-app-fancontrol.git
+#src-git fancontrol https://github.com/zkcaryq/luci-app-fancontrol.git
 #src-git oaf https://github.com/destan19/OpenAppFilter.git
 
