@@ -58,11 +58,20 @@ jobs:
 
       - name: Update feeds
         run: |
-          sed -i 's/#src-git helloworld/src-git helloworld/g' ./feeds.conf.default
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-          ./scripts/feeds install -a -p qmodem
-          
+
+      - name: Fix QModem dependency names
+        run: |
+          grep -rl "quectel-CM-5G" feeds/qmodem/ | xargs sed -i 's/quectel-CM-5G/quectel_CM_5G_M/g'
+
+      - name: Remove qmodem hard dependencies
+        run: |
+          sed -i '/DEPENDS:=/s/+kmod-mhi-wwan//g' feeds/qmodem/qmodem/Makefile
+          sed -i '/DEPENDS:=/s/+quectel_CM_5G_M//g' feeds/qmodem/qmodem/Makefile
+          sed -i '/DEPENDS:=/s/+kmod-mhi-wwan//g' feeds/qmodem/luci/luci-app-qmodem-next/Makefile
+          sed -i '/DEPENDS:=/s/+quectel_CM_5G_M//g' feeds/qmodem/luci/luci-app-qmodem-next/Makefile
+
       - name: Generate configuration file
         run: make defconfig
 
