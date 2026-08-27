@@ -63,7 +63,7 @@ jobs:
           cd package && git clone --depth 1 https://github.com/QMODEM/quectel-CM-5G.git quectel-cm-5g
 
       - name: Generate configuration file
-        run: make defconfig || true
+        run: make defconfig
         
       - name: Download packages
         run: make download -j16
