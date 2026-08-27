@@ -15,4 +15,4 @@ src-git qmodem https://github.com/FUjr/QModem.git;main
 #src-git oaf https://github.com/destan19/OpenAppFilter.git
 #src-git openwrt_packages https://github.com/openwrt/packages.git;openwrt-25.12
 # 仅QModem全配套，无其他无关插件源
-src-git quectel-cm-5g https://github.com/QMODEM/quectel-CM-5G.git
+#src-git quectel-cm-5g https://github.com/QMODEM/quectel-CM-5G.git
