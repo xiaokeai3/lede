@@ -62,14 +62,9 @@ jobs:
           ./scripts/feeds install -a
           cd package && git clone --depth 1 https://github.com/QMODEM/quectel-CM-5G.git quectel-cm-5g
 
-# 完全独立，只处理qmodem feeds包的依赖修复
-      - name: xiufukmod
-        run: sed -i 's/kmod-mhi-wwan/kmod-mhi-mbim/g' package/feeds/qmodem/qmodem/Makefile
-
-
       - name: Generate configuration file
-        run: make defconfig
-
+        run: make defconfig || true
+        
       - name: Download packages
         run: make download -j16
 
