@@ -60,13 +60,6 @@ jobs:
         run: |
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-      - name: Fix QModem dependency names
-        run: |
-          find feeds/qmodem -type f -name "Makefile" -exec sed -i \
-          -e 's/quectel-CM-5G/quectel-CM-5G-M/g' \
-          -e 's/quectel_CM_5G_M/quectel-CM-5G-M/g' \
-          -e '/DEPENDS:=/s/+kmod-mhi-wwan//g' \
-          {} +
           
       - name: Generate configuration file
         run: make defconfig
