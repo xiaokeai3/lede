@@ -14,5 +14,7 @@ src-git helloworld https://github.com/fw876/helloworld.git
 #src-git fancontrol https://github.com/zkcaryq/luci-app-fancontrol.git
 #src-git oaf https://github.com/destan19/OpenAppFilter.git
 #src-git openwrt_packages https://github.com/openwrt/packages.git;openwrt-25.12
-
-src-git qmodem https://github.com/FUjr/QModem.git;snapshot-sdk-and-3.2.0
+# 仅QModem全配套，无其他无关插件源
+src-git qmodem https://github.com/FUjr/QModem.git;main
+src-git mhi https://github.com/FUjr/kmod-mhi-wwan.git
+src-git quectel https://github.com/FUjr/quectel-cm.git
