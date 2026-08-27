@@ -61,7 +61,9 @@ jobs:
           ./scripts/feeds update -a
           ./scripts/feeds install -a
           cd package && git clone --depth 1 https://github.com/QMODEM/quectel-CM-5G.git quectel-cm-5g
-          
+          find ./luci-app-qmodem -name "Makefile" -exec sed -i 's/DEPENDS+= +kmod-mhi-wwan/DEPENDS+= +kmod-mhi-wwan:kmod-mhi-wwan/g' {} \;
+          cd ..
+
       - name: Generate configuration file
         run: make defconfig
 
