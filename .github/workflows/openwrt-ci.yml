@@ -60,18 +60,20 @@ jobs:
         run: |
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-
       - name: Fix QModem dependency names
         run: |
-          grep -rl "quectel-CM-5G" feeds/qmodem/ | xargs sed -i 's/quectel-CM-5G/quectel_CM_5G_M/g'
+      # 将错误的依赖名 quectel-CM-5G 或 quectel_CM_5G_M 替换为正确的 quectel-CM-5G-M
+       grep -rl "quectel-CM-5G" feeds/qmodem/ | xargs sed -i 's/quectel-CM-5G/quectel-CM-5G-M/g'
+       grep -rl "quectel_CM_5G_M" feeds/qmodem/ | xargs sed -i 's/quectel_CM_5G_M/quectel-CM-5G-M/g'
 
       - name: Remove qmodem hard dependencies
         run: |
-          sed -i '/DEPENDS:=/s/+kmod-mhi-wwan//g' feeds/qmodem/qmodem/Makefile
-          sed -i '/DEPENDS:=/s/+quectel_CM_5G_M//g' feeds/qmodem/qmodem/Makefile
-          sed -i '/DEPENDS:=/s/+kmod-mhi-wwan//g' feeds/qmodem/luci/luci-app-qmodem-next/Makefile
-          sed -i '/DEPENDS:=/s/+quectel_CM_5G_M//g' feeds/qmodem/luci/luci-app-qmodem-next/Makefile
-
+    # 删除 kmod-mhi-wwan 依赖（因为不存在）
+       sed -i '/DEPENDS:=/s/+kmod-mhi-wwan//g' feeds/qmodem/qmodem/Makefile
+       sed -i '/DEPENDS:=/s/+kmod-mhi-wwan//g' feeds/qmodem/luci/luci-app-qmodem-next/Makefile
+    # 如果还有 quectel-CM-5G-M 依赖，也可以选择移除，但保留它通常没问题
+    # sed -i '/DEPENDS:=/s/+quectel-CM-5G-M//g' feeds/qmodem/qmodem/Makefile
+    # sed -i '/DEPENDS:=/s/+quectel-CM-5G-M//g' feeds/qmodem/luci/luci-app-qmodem-next/Makefile
       - name: Generate configuration file
         run: make defconfig
 
