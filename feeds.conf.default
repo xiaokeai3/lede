@@ -1,20 +1,15 @@
-src-git packages https://github.com/coolsnowwolf/packages
-#src-git luci https://github.com/coolsnowwolf/luci
+src-git packages https://github.com/coolsnowwolf/packages.git
+#src-git luci https://github.com/coolsnowwolf/luci.git
 #src-git luci https://github.com/coolsnowwolf/luci.git;openwrt-23.05
 src-git luci https://github.com/coolsnowwolf/luci.git;openwrt-24.10
 #src-git luci https://github.com/coolsnowwolf/luci.git;openwrt-25.12
-src-git routing https://github.com/coolsnowwolf/routing
+src-git routing https://github.com/coolsnowwolf/routing.git
 src-git telephony https://github.com/coolsnowwolf/telephony.git
 src-git helloworld https://github.com/fw876/helloworld.git
-#src-git qmodem https://github.com/FUjr/QModem.git;main
-src-git qmodem https://github.com/xiaokeai3/QModem.git
+#src-git qmodem https://github.com/FUjr/modem_feeds.git
 #src-git video https://github.com/openwrt/video.git
 #src-git targets https://github.com/openwrt/targets.git
 #src-git oldpackages http://git.openwrt.org/packages.git
 #src-link custom /usr/src/openwrt/custom-feed
-#src-git fancontrol https://github.com/zkcaryq/luci-app-fancontrol.git
-#src-git oaf https://github.com/destan19/OpenAppFilter.git
-#src-git openwrt_packages https://github.com/openwrt/packages.git;openwrt-25.12
-# 仅QModem全配套，无其他无关插件源
-#src-git quectel-cm-5g https://github.com/QMODEM/quectel-CM-5G.git
-src-git fancontrol https://github.com/JiaY-shi/fancontrol.git
+src-git qmodem https://github.com/xiaokeai3/QModem.git
+
