@@ -12,4 +12,4 @@ src-git helloworld https://github.com/fw876/helloworld.git
 #src-git oldpackages http://git.openwrt.org/packages.git
 #src-link custom /usr/src/openwrt/custom-feed
 src-git qmodem https://github.com/xiaokeai3/QModem.git
-src-git argon https://github.com/xiaokeai3/luci-theme-argon.git
+#src-git argon https://github.com/xiaokeai3/luci-theme-argon.git
